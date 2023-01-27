@@ -1,0 +1,31 @@
+.adv{
+    width: 100vm;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: montserrat, sans-serif;
+    margin: 30px 0;
+}
+
+.adv__col{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+}
+
+.adv__colIcon{
+    border: 2px solid #3caaf7;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.adv__colTitle{
+    font-size: larger;
+    color: #3caaf7;
+    font-weight: normal;
+    margin-bottom: 20px;
+}

@@ -1,0 +1,51 @@
+.about{
+    width: 100vm;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: montserrat, sans-serif;
+    padding: 25px 0;
+}
+
+.about__card{
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    background: none;
+    border: none;
+    align-items: center;
+}
+
+.about__img{
+    width: 31vw;
+    height: fit-content;
+    margin-right: 5vw;
+    border-radius: 0;
+}
+
+.about__cardBody{
+    width: 50vw;
+    height: auto;
+}
+
+.about__cardTitle{
+    font-size: xxx-large;
+    font-weight: bold;
+}
+
+.about__cardTitle2{
+    font-size: xx-large;
+    font-weight: lighter;
+}
+
+.about__divider{
+    color: #3caaf7;
+    font-weight: bolder;
+    font-size: xx-large;
+    margin: 10px 0 30px 0;
+}
+
+.about__cardSubtitle{
+    margin-bottom: 20px;
+}

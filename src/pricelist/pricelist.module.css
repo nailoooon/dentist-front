@@ -1,0 +1,22 @@
+.pricelist{
+    width: 100vm;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: montserrat, sans-serif;
+    margin: 50px 0;
+}
+
+.pricelist__title{
+    font-size: xxx-large;
+    font-weight: bolder;
+}
+
+.pricelist__divider{
+    color: #3caaf7;
+    font-weight: bolder;
+    font-size: xx-large;
+    margin-bottom: 20px;
+}

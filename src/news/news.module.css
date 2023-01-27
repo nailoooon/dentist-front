@@ -1,0 +1,41 @@
+.news{
+    width: 100vm;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: montserrat, sans-serif;
+    margin: 50px 0;
+}
+
+.news__title{
+    font-size: xxx-large;
+    font-weight: bolder;
+}
+
+.news__divider{
+    color: #3caaf7;
+    font-weight: bolder;
+    font-size: xx-large;
+    margin-bottom: 20px;
+}
+
+.news__card{
+    width: fit-content;
+    height: auto;
+    display: flex;
+    border-radius: 0;
+    border: none;
+    margin-bottom: 24px;
+}
+
+.news__date{
+    opacity: 50%;
+    margin: 0;
+}
+
+.news__cardTitle{
+    font-size: x-large;
+    margin-bottom: 16px;
+}

@@ -1,0 +1,61 @@
+.doctors{
+    width: 100vm;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: montserrat, sans-serif;
+    margin: 50px 0;
+}
+
+.doctors__title{
+    font-size: xxx-large;
+    font-weight: bolder;
+}
+
+.doctors__title2{
+    font-size: xx-large;
+    font-weight: lighter;
+}
+
+.doctors__divider{
+    color: #3caaf7;
+    font-weight: bolder;
+    font-size: xx-large;
+    margin-bottom: 20px;
+}
+
+.doctors__card{
+    width: fit-content;
+    height: auto;
+    display: flex;
+    align-items: center;
+    border-radius: 0;
+    border: none;
+    background-color: #f5f5f5;
+    padding: 30px;
+    margin-bottom: 24px;
+}
+
+.doctors__card:hover{
+    transition: 0.4s;
+    background-color: #d5d5d5;
+}
+
+.doctors__cardText{
+    margin: 10px 0 30px 0;
+}
+
+.doctors__btn{
+    width: 200px;
+    font-size: medium;
+    border-radius: 0;
+    border: none;
+    background-color: #3caaf7;
+}
+
+.doctors__btn:hover{
+    transition: 0.4s;
+    background-color: #0675de;
+}

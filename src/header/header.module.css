@@ -1,0 +1,16 @@
+.header{
+    margin: 0px 80px;
+}
+
+.header__navbar{
+}
+
+.header__logo{
+    width: 7vw;
+    height: fit-content;
+}
+
+.header__nav{
+    font-family: montserrat, sans-serif;
+    font-size: 120%;
+}

@@ -1,0 +1,36 @@
+.welcome{
+    width: 100vm;
+    height: 100vh;
+    background-image: url("/src/images/translucent-image.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: flex-start;
+    padding: 100px;
+    font-family: montserrat, sans-serif;
+    color: #444444;
+}
+
+.welcome__card{
+    border: none;
+    background: none;
+}
+
+.welcome__cardTitle{
+    font-size: xxx-large;
+    font-weight: bold;
+}
+
+
+.welcome__cardSubtitle{
+    font-size: xx-large;
+    font-weight: lighter;
+    line-height: 1.4;
+    margin-bottom: 40px;
+}
+
+.welcome__cardText{
+    font-size: large;
+    font-weight: lighter;
+    line-height: 1;
+}
