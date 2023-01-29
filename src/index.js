@@ -12,6 +12,7 @@ import Doctors from "./doctors/doctors";
 import News from "./news/news";
 import Pricelist from "./pricelist/pricelist";
 import Footer from "./footer/footer";
+import MyMap from "./yandex_map/myMap";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -24,6 +25,8 @@ root.render(
       <Doctors/>
       <News/>
         <Pricelist/>
+      {/*add map*/}
+      <MyMap/>
       <Footer/>
   </div>
 );
