@@ -9,6 +9,32 @@
     margin: 50px 0;
 }
 
+.main__header {
+    width: 100%;
+    background-color: #D1D2D4;
+    text-align: center;
+    color: #235FCF;
+    min-height: 30px;
+    border: 1px solid black;
+}
+
+.main__subheader {
+    width: 100%;
+    background-color: #235FCF;
+    text-align: center;
+    color: white;
+    min-height: 30px;
+    border: 1px solid black;
+}
+
+.price__column__item {
+    width: 100%;
+    border: 2px solid blue;
+    text-align: center;
+    color: black;
+    min-height: 30px;
+}
+
 .pricelist__title{
     font-size: xxx-large;
     font-weight: bolder;

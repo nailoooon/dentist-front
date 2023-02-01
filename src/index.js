@@ -13,21 +13,22 @@ import News from "./news/news";
 import Pricelist from "./pricelist/pricelist";
 import Footer from "./footer/footer";
 import MyMap from "./yandex_map/myMap";
+import DropDownPriceList from "./pricelist/dropdownPriceList/dropDownPriceList";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <div>
-      <Header />
-      <Welcome/>
-      <About/>
-      <Advantages/>
-      <Services/>
-      <Doctors/>
-      <News/>
+        <Header />
+        <Welcome/>
+        <About/>
+        <Advantages/>
+        <Services/>
+        <DropDownPriceList />
+        <Doctors/>
+        <News/>
         <Pricelist/>
-      {/*add map*/}
-      <MyMap/>
-      <Footer/>
+        <MyMap/>
+        <Footer/>
   </div>
 );
 
