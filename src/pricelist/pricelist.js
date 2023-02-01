@@ -1,8 +1,24 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from '../pricelist/pricelist.module.css'
 import {Container, Table} from "reactstrap";
+import {RowItem} from "./rowItem/rowItem";
+import axios from "axios";
+import {CONFIG, SERVER_NAME} from "../API/Constants";
 
 const Pricelist = () => {
+
+    const [services, setServices] = useState([]);
+
+    useEffect(() => {
+        const apiUrl = SERVER_NAME + "service";
+        axios.get(apiUrl, CONFIG).then((resp) => {
+            const allServices = resp.data;
+            setServices(allServices);
+        });
+    }, [setServices]);
+
+    console.log(services)
+
     return (
         <div className={styles.pricelist}>
             <div className={styles.pricelist__title}>
@@ -21,100 +37,14 @@ const Pricelist = () => {
                             <th>
                                 Лечение зубов без микроскопа
                             </th>
-                            <th>
-                                Лечение зубов с микроскопом
-                            </th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope={"row"}>
-                                Консультация
-                            </th>
-                            <th>
-                                300 руб.
-                            </th>
-                            <th>
-
-                            </th>
-                        </tr>
-                        <tr>
-                            <th scope={"row"}>
-                                Диагностическое вмешательство
-                            </th>
-                            <th>
-                                1500 руб.
-                            </th>
-                            <th>
-                                1500 руб.
-                            </th>
-                        </tr>
-                        <tr>
-                            <th scope={"row"}>
-                                Имплантация эмали (лечение кариеса)
-                            </th>
-                            <th>
-                                2500 руб.
-                            </th>
-                            <th>
-                                2500 руб.
-                            </th>
-                        </tr>
-                        <tr>
-                            <th scope={"row"}>
-                                Диагностическое вмешательство
-                            </th>
-                            <th>
-                                1500 руб.
-                            </th>
-                            <th>
-                                1500 руб.
-                            </th>
-                        </tr>
-                        <tr>
-                            <th scope={"row"}>
-                                Консультация
-                            </th>
-                            <th>
-                                300 руб.
-                            </th>
-                            <th>
-
-                            </th>
-                        </tr>
-                        <tr>
-                            <th scope={"row"}>
-                                Диагностическое вмешательство
-                            </th>
-                            <th>
-                                1500 руб.
-                            </th>
-                            <th>
-                                1500 руб.
-                            </th>
-                        </tr>
-                        <tr>
-                            <th scope={"row"}>
-                                Имплантация эмали (лечение кариеса)
-                            </th>
-                            <th>
-                                2500 руб.
-                            </th>
-                            <th>
-                                2500 руб.
-                            </th>
-                        </tr>
-                        <tr>
-                            <th scope={"row"}>
-                                Диагностическое вмешательство
-                            </th>
-                            <th>
-                                1500 руб.
-                            </th>
-                            <th>
-                                1500 руб.
-                            </th>
-                        </tr>
+                    {
+                        services.map(item => {
+                            return <RowItem key={item._id} name={item.name} price={item.price}/>
+                        })
+                    }
                     </tbody>
                 </Table>
             </Container>

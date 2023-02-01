@@ -55,6 +55,10 @@
     background-color: #3caaf7;
 }
 
+.doctors__image{
+    width: 200px;
+}
+
 .doctors__btn:hover{
     transition: 0.4s;
     background-color: #0675de;
