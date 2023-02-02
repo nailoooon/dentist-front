@@ -6,7 +6,7 @@ import {NavbarBrand} from "reactstrap";
 const Footer = () => {
     return (
         <div className={styles.footer}>
-
+риормрпмпрстл
 
         </div>
     );
