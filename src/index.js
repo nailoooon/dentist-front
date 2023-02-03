@@ -17,6 +17,7 @@ import MyMap from "./yandex_map/myMap";
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <div>
+<<<<<<< Updated upstream
       <Header />
       <Welcome/>
       <About/>
@@ -28,6 +29,18 @@ root.render(
       {/*add map*/}
       <MyMap/>
       <Footer/>
+=======
+        <Header />
+        <Welcome/>
+        <About/>
+        <Advantages/>
+        <Services/>
+        <DropDownPriceList />
+        <Doctors/>
+        <News/>
+        <MyMap/>
+        <Footer/>
+>>>>>>> Stashed changes
   </div>
 );
 

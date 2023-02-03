@@ -3,7 +3,7 @@
     height: 100vh;
     background-image: url("/src/images/translucent-image.png");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: auto;
     display: flex;
     align-items: flex-start;
     padding: 100px;
@@ -17,7 +17,7 @@
 }
 
 .welcome__cardTitle{
-    font-size: xxx-large;
+
     font-weight: bold;
 }
 
