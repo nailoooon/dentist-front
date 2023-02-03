@@ -1,5 +1,7 @@
 import React from 'react';
+
 import {Card, CardBody, CardImg, CardText, CardTitle, Col} from "reactstrap";
+
 import styles from "../news.module.css";
 import {SERVER_NAME} from "../../API/Constants";
 
@@ -10,6 +12,7 @@ const NewsItem = ({news}) => {
     return (
         <Col>
             <Card body className={styles.news__card}>
+
                 <CardImg className={styles.news__img} src={SERVER_NAME + news.picture}/>
                 <CardBody>
                     <CardTitle className={styles.news__cardTitle}>
@@ -22,6 +25,7 @@ const NewsItem = ({news}) => {
                     26.08.22
                 </CardText>
                 </CardBody>
+
             </Card>
         </Col>
     );

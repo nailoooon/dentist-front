@@ -2,12 +2,13 @@ import React from 'react';
 import styles from '../about us/about.module.css'
 import {Card, CardBody, CardImg, CardSubtitle, CardTitle} from "reactstrap";
 import doctor from '../images/doctor.jpg'
+import doctor_prod from '../images/doctor_prod.jpg'
 
 const About = () => {
     return (
         <div className={styles.about}>
             <Card className={styles.about__card}>
-                <CardImg alt={"doctor"} src={doctor} className={styles.about__img} />
+                <CardImg alt={"doctor"} src={doctor_prod} className={styles.about__img} />
                <CardBody className={styles.about__cardBody}>
                     <CardTitle className={styles.about__cardTitle}>
                     Более <span style={{color: "#3caaf7"}}>10 лет</span>

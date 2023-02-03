@@ -1,8 +1,23 @@
 import React from 'react';
 import styles from '../doctors/doctors.module.css'
 import {Button, Card, CardText, CardTitle, Col, Container, Row} from "reactstrap";
+import {useEffect, useState} from "react";
+import {CONFIG, SERVER_NAME} from "../API/Constants";
+import axios from "axios";
+import DoctorItem from "./doctorItem/doctorItem";
 
 const Doctors = () => {
+
+    const [doctors, setDoctors] = useState([]);
+
+    useEffect(() => {
+        const apiUrl = SERVER_NAME + "doctor";
+        axios.get(apiUrl, CONFIG).then((resp) => {
+            const allServices = resp.data;
+            setDoctors(allServices);
+        });
+    }, [setDoctors]);
+
     return (
         <div className={styles.doctors}>
             <div className={styles.doctors__title}>
@@ -16,71 +31,9 @@ const Doctors = () => {
             </div>
             <Container>
                 <Row >
-                    <Col >
-                        <Card body className={styles.doctors__card}>
-                            <CardTitle tag={"h5"}>
-                                Мария Андреева
-                            </CardTitle>
-                            <CardText className={styles.doctors__cardText}>
-                                Врач-терапевт
-                            </CardText>
-                            <Button className={styles.doctors__btn}>
-                                Записаться
-                            </Button>
-                        </Card>
-                    </Col>
-                    <Col >
-                        <Card body className={styles.doctors__card}>
-                            <CardTitle tag={"h5"}>
-                                Мария Андреева
-                            </CardTitle>
-                            <CardText className={styles.doctors__cardText}>
-                                Врач-терапевт
-                            </CardText>
-                            <Button className={styles.doctors__btn}>
-                                Записаться
-                            </Button>
-                        </Card>
-                    </Col>
-                    <Col >
-                        <Card body className={styles.doctors__card}>
-                            <CardTitle tag={"h5"}>
-                                Мария Андреева
-                            </CardTitle>
-                            <CardText className={styles.doctors__cardText}>
-                                Врач-терапевт
-                            </CardText>
-                            <Button className={styles.doctors__btn}>
-                                Записаться
-                            </Button>
-                        </Card>
-                    </Col>
-                    <Col >
-                        <Card body className={styles.doctors__card}>
-                            <CardTitle tag={"h5"}>
-                                Мария Андреева
-                            </CardTitle>
-                            <CardText className={styles.doctors__cardText}>
-                                Врач-терапевт
-                            </CardText>
-                            <Button className={styles.doctors__btn}>
-                                Записаться
-                            </Button>
-                        </Card>
-                    </Col>
-                    <Col >
-                        <Card body className={styles.doctors__card}>
-                            <CardTitle tag={"h5"}>
-                                Мария Андреева
-                            </CardTitle>
-                            <CardText className={styles.doctors__cardText}>
-                                Врач-терапевт
-                            </CardText>
-                            <Button className={styles.doctors__btn}>
-                                Записаться
-                            </Button>
-                        </Card>
-                    </Col>
+                    {doctors.map(doctor => {
+                        return <DoctorItem key={doctor._id} props={doctor}/>
+                    })}
                 </Row>
             </Container>
         </div>

@@ -54,8 +54,7 @@
     background-color: #3caaf7;
 }
 
-<<<<<<< Updated upstream
-=======
+
 .doctors__image{
     width: border-box;
     border-radius: 0;
@@ -63,7 +62,6 @@
     margin-bottom: 16px;
 }
 
->>>>>>> Stashed changes
 .doctors__btn:hover{
     transition: 0.4s;
     background-color: #0675de;

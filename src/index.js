@@ -13,23 +13,12 @@ import News from "./news/news";
 import Pricelist from "./pricelist/pricelist";
 import Footer from "./footer/footer";
 import MyMap from "./yandex_map/myMap";
+import DropDownPriceList from "./pricelist/dropdownPriceList/dropDownPriceList";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <div>
-<<<<<<< Updated upstream
-      <Header />
-      <Welcome/>
-      <About/>
-      <Advantages/>
-      <Services/>
-      <Doctors/>
-      <News/>
-        <Pricelist/>
-      {/*add map*/}
-      <MyMap/>
-      <Footer/>
-=======
+
         <Header />
         <Welcome/>
         <About/>
@@ -40,7 +29,7 @@ root.render(
         <News/>
         <MyMap/>
         <Footer/>
->>>>>>> Stashed changes
+
   </div>
 );
 
