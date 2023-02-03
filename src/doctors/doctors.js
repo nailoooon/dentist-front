@@ -34,6 +34,10 @@ const Doctors = () => {
                     {doctors.map(doctor => {
                         return <DoctorItem key={doctor._id} props={doctor}/>
                     })}
+                    {doctors.map(doctor => {
+                        return <DoctorItem key={doctor._id} props={doctor}/>
+                    })}
+
                 </Row>
             </Container>
         </div>

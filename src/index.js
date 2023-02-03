@@ -10,7 +10,6 @@ import Advantages from "./advantages/advantages";
 import Services from "./services/services";
 import Doctors from "./doctors/doctors";
 import News from "./news/news";
-import Pricelist from "./pricelist/pricelist";
 import Footer from "./footer/footer";
 import MyMap from "./yandex_map/myMap";
 import DropDownPriceList from "./pricelist/dropdownPriceList/dropDownPriceList";

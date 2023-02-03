@@ -2,7 +2,7 @@ import React from 'react';
 import styles from '../about us/about.module.css'
 import {Card, CardBody, CardImg, CardSubtitle, CardTitle} from "reactstrap";
 import doctor from '../images/doctor.jpg'
-import doctor_prod from '../images/doctor_prod.jpg'
+import doctor_prod from '../images/doctor_prod2.jpg'
 
 const About = () => {
     return (

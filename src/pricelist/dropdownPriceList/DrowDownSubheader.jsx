@@ -18,10 +18,10 @@ const DrowDownSubheader = ({item}) => {
                 isOpen && (
                     <div>
                         <div style={{display: "flex"}}>
-                            <div className={styles.price__column__item}>
+                            <div className={styles.price__column__name}>
                                 Наименование услуги
                             </div>
-                            <div className={styles.price__column__item}>
+                            <div className={styles.price__column__name}>
                                 Стоимость (в тенге)
                             </div>
                         </div>

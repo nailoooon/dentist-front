@@ -1,0 +1,23 @@
+.map{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-family: montserrat, sans-serif;
+    font-weight: 800;
+}
+
+.map__card{
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+}
+
+.map__title{
+    font-size: xx-large;
+    margin-bottom: 24px;
+}
+
+.map__sub{
+    font-size: large;
+    font-weight: normal;
+}

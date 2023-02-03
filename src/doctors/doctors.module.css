@@ -27,7 +27,7 @@
 }
 
 .doctors__card{
-    width: fit-content;
+    width: 300px;
     height: auto;
     display: flex;
     align-items: center;
