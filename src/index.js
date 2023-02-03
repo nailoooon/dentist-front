@@ -18,6 +18,7 @@ import DropDownPriceList from "./pricelist/dropdownPriceList/dropDownPriceList";
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <div>
+
         <Header />
         <Welcome/>
         <About/>
@@ -26,9 +27,9 @@ root.render(
         <DropDownPriceList />
         <Doctors/>
         <News/>
-        <Pricelist/>
         <MyMap/>
         <Footer/>
+
   </div>
 );
 

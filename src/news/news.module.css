@@ -28,6 +28,16 @@
     border-radius: 0;
     border: none;
     margin-bottom: 24px;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.news__img{
+    width: 300px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 0;
+    margin: 16px;
 }
 
 .news__date{
