@@ -19,7 +19,7 @@ const Doctors = () => {
     }, [setDoctors]);
 
     return (
-        <div className={styles.doctors}>
+        <div className={styles.doctors} id={"doctors"}>
             <div className={styles.doctors__title}>
                 Наша <span style={{color: "#3caaf7"}}>команда</span>
             </div>

@@ -1,7 +1,8 @@
 .map{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     font-family: montserrat, sans-serif;
     font-weight: 800;
 }
@@ -13,8 +14,15 @@
 }
 
 .map__title{
+    font-size: xxx-large;
+    font-weight: bolder;
+}
+
+.map__divider{
+    color: #3caaf7;
+    font-weight: bolder;
     font-size: xx-large;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
 }
 
 .map__sub{

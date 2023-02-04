@@ -6,7 +6,7 @@ import doctor_prod from '../images/doctor_prod2.jpg'
 
 const About = () => {
     return (
-        <div className={styles.about}>
+        <div className={styles.about} id={"about"}>
             <Card className={styles.about__card}>
                 <CardImg alt={"doctor"} src={doctor_prod} className={styles.about__img} />
                <CardBody className={styles.about__cardBody}>
