@@ -26,18 +26,18 @@ function Header(args){
                 </NavbarBrand>
                     <Nav className={styles.header__nav}>
                         <NavItem>
-                            <NavLink href={"/"} style={{color: "black"}}>
+                            <NavLink href={"#about"} style={{color: "black"}}>
                                 Почему мы
                             </NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink href={"/"} style={{color: "black"}}>
+                            <NavLink href={"#doctors"} style={{color: "black"}}>
                                 Врачи
                             </NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink href={"/"} style={{color: "black"}}>
-                                Записаться на прием
+                            <NavLink href={"#services"} style={{color: "black"}}>
+                                Услуги и цены
                             </NavLink>
                         </NavItem>
                         <UncontrolledDropdown nav>
@@ -47,12 +47,12 @@ function Header(args){
                             <DropdownMenu>
                                 <DropdownItem>
                                     <NavLink href="tel: +7 702 920 6161" style={{color: "black"}}>
-                                        <BsFillTelephoneFill/> +7 702 920 6161
+                                        <BsFillTelephoneFill style={{color: "3caaf7"}}/> +7 702 920 6161
                                     </NavLink>
                                 </DropdownItem>
                                 <DropdownItem>
                                     <NavLink href="https://api.whatsapp.com/send?phone=77029206161" style={{color: "black"}}>
-                                        <BsWhatsapp/> Написать на WhatsApp
+                                        <BsWhatsapp style={{color: "3caaf7", fontSize: "large"}}/> Написать на WhatsApp
                                     </NavLink>
                                 </DropdownItem>
                             </DropdownMenu>
