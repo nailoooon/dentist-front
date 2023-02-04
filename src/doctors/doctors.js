@@ -13,8 +13,9 @@ const Doctors = () => {
     useEffect(() => {
         const apiUrl = SERVER_NAME + "doctor";
         axios.get(apiUrl, CONFIG).then((resp) => {
-            const allServices = resp.data;
-            setDoctors(allServices);
+            const data = resp.data;
+            console.log(data)
+            setDoctors(data);
         });
     }, [setDoctors]);
 
@@ -31,9 +32,6 @@ const Doctors = () => {
             </div>
             <Container>
                 <Row >
-                    {doctors.map(doctor => {
-                        return <DoctorItem key={doctor._id} props={doctor}/>
-                    })}
                     {doctors.map(doctor => {
                         return <DoctorItem key={doctor._id} props={doctor}/>
                     })}
