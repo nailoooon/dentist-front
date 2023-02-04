@@ -23,7 +23,6 @@ root.render(
         <About/>
         <Advantages/>
         <Services/>
-        <DropDownPriceList />
         <Doctors/>
         <News/>
         <MyMap/>
