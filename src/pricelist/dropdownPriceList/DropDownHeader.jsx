@@ -19,7 +19,7 @@ const DropDownHeader = ({item}) => {
             {
                 isOpen && (
                     <div>
-                        {item.category.map(obj => {
+                        {item.subSectors.map(obj => {
                             return <DrowDownSubheader item={obj}/>
                         })}
                     </div>

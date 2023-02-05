@@ -1,37 +1,37 @@
 import React, {useState} from 'react';
 import DropDownHeader from "./DropDownHeader";
+import {useEffect} from "react";
+import {CONFIG, SERVER_NAME} from "../../API/Constants";
+import axios from "axios";
 
 const DropDownPriceList = () => {
 
     const [state, setState] = useState([
-        {name: "Терапевтические услуги", category: [
-            {name: "Профессиональная чистка", services: [
-                    {name: "Ультразвук", price: 15000},
-                    {name: "Air Flow", price: 25000},
+        {name: "Загрузка...", subSectors: [
+            {name: "Загрузка...", services: [
+                    {name: "Загрузка...", price: 0},
                 ]},
-            {name: "Лечение не осложненного кариеса", services: [
-                    {name: "Поверхностный: пломба Filtec, Charisma (световая, Германия)", price: 16330},
-                    {name: "Средний: пломба Filtec, Charisma(световая,Германия)", price: 18630},
-                    {name: "Глубокий: пломба Filtec,Charisma(световая,Германия)", price: 18630},
-                    {name: "Лечение клиновидного дефекта", price: 18630},
+            {name: "Загрузка...", services: [
+                    {name: "Загрузка...", price: 0},
                 ]},
-                {name: "Лечение осложненного кариеса", services: [
-                        {name: "Дефект пломбы ", price: 16100},
-                        {name: "МТА", price: 3000},
-                        {name: "I корневой зуб: пломба Filtec, Charisma(световая,Германия)", price: 31740},
-                        {name: "II корневой зуб: пломба Filtec, Charisma(световая,Германия)\n", price: 34500},
-                    ]},
             ]
         },
-        {name: "Хирургическая стоматология", category: [
-                {name: "Хирургическая стоматология", services: [
-                        {name: "Консультация оформление первичной документации", price: 1000},
-                        {name: "Убистезин, Артикаин", price: 4000},
-                        {name: "Удаление", price: 12000},
+        {name: "Загрузка...", subSectors: [
+                {name: "Загрузка...", services: [
+                        {name: "Загрузка...", price: 0},
                     ]},
             ]
         },
     ])
+
+    useEffect(() => {
+        const apiUrl = SERVER_NAME + "service/sector";
+        axios.get(apiUrl, CONFIG).then((resp) => {
+            const data = resp.data;
+            console.log(data)
+            setState(data);
+        });
+    }, [setState]);
 
     return (
         <div>

@@ -25,9 +25,9 @@ const DrowDownSubheader = ({item}) => {
                                 Стоимость (в тенге)
                             </div>
                         </div>
-                        {item.services.map(obj =>
-                            <NameAndPrice name={obj.name} price={obj.price}/>
-
+                        {item.services.map(obj => {
+                                return <NameAndPrice name={obj.name} price={obj.price}/>
+                            }
                         )}
                     </div>
 
