@@ -6,4 +6,7 @@ export const CONFIG = {
     }
 };
 
+export const LogOut = () => {localStorage.removeItem("token")}
+export const IsAuth = () => {return localStorage.getItem("token")}
+
 // "http://localhost:5000/"

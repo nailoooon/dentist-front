@@ -2,32 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import Header from "./header/header";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Welcome from "./welcome/welcome";
-import About from "./about us/about";
-import Advantages from "./advantages/advantages";
-import Services from "./services/services";
-import Doctors from "./doctors/doctors";
-import News from "./news/news";
-import Footer from "./footer/footer";
-import MyMap from "./yandex_map/myMap";
-import DropDownPriceList from "./pricelist/dropdownPriceList/dropDownPriceList";
+import App from "./App";
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <div>
-
-        <Header />
-        <Welcome/>
-        <About/>
-        <Advantages/>
-        <Services/>
-        <Doctors/>
-        <News/>
-        <MyMap/>
-        <Footer/>
-
+          <App/>
   </div>
 );
 
