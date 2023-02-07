@@ -14,16 +14,16 @@ const AdminPage = () => {
                 <h1 className={styles.pageTitle}>Admin Panel</h1>
                 <div className={styles.cardContainer}>
                     <CardAdminItem title={"Appointments"} text={"View and manage upcoming appointments."}
-                        linkText={"Go to Appointments"} linkRef={"/"}/>
+                        linkText={"Go to Appointments"} linkRef={"/admin/appointment"}/>
 
                     <CardAdminItem title={"Patients"} text={"View and manage patient records."}
                                    linkText={"Go to Patients"} linkRef={"/admin/patient"}/>
 
                     <CardAdminItem title={"Staff"} text={"View and manage staff members."}
-                                   linkText={"Go to Staff"} linkRef={"/"}/>
+                                   linkText={"Go to Staff"} linkRef={"/admin/staff"}/>
 
                     <CardAdminItem title={"Services"} text={"View and manage dentist services."}
-                                   linkText={"Go to services"} linkRef={"/"}/>
+                                   linkText={"Go to services"} linkRef={"/admin/service"}/>
                 </div>
             </div>
             <Outlet />

@@ -1,27 +1,42 @@
-import React from 'react';
+import React, {useState, useEffect } from 'react';
 import styles from './patientPage.module.css'
+import {CONFIG, LoadingData, SERVER_NAME} from "../../API/Constants";
+import axios from "axios";
 
 const PatientPage = () => {
-    const patients = [
+
+    const [image, setImage] = useState(new Map())
+    const addImage = (k, v) => setImage(image.set(k, v))
+
+    const [patients, setPatient] = useState([
         {
             id: 1,
-            fullName: 'Jane Doe',
-            email: 'jane.doe@example.com',
-            cellNumber: '555-555-5555'
+            fullname: LoadingData,
+            email: LoadingData,
+            tel: LoadingData
         },
         {
             id: 2,
-            fullName: 'John Smith',
-            email: 'john.smith@example.com',
-            cellNumber: '555-555-5556'
+            fullname: LoadingData,
+            email: LoadingData,
+            tel: LoadingData
         },
         {
             id: 3,
-            fullName: 'Bob Johnson',
-            email: 'bob.johnson@example.com',
-            cellNumber: '555-555-5557'
+            fullname: LoadingData,
+            email: LoadingData,
+            tel: LoadingData
         }
-    ];
+    ])
+
+    useEffect(() => {
+        const apiUrl = SERVER_NAME + "patient";
+        axios.get(apiUrl, CONFIG).then((resp) => {
+            const data = resp.data;
+            setPatient(data);
+        });
+    }, [setPatient]);
+
 
     return (
         <div className={styles.patientsPage}>
@@ -37,9 +52,9 @@ const PatientPage = () => {
                 <tbody>
                 {patients.map(patient => (
                     <tr key={patient.id}>
-                        <td className={styles.th_td_style}>{patient.fullName}</td>
+                        <td className={styles.th_td_style}>{patient.fullname}</td>
                         <td className={styles.th_td_style}>{patient.email}</td>
-                        <td className={styles.th_td_style}>{patient.cellNumber}</td>
+                        <td className={styles.th_td_style}>{patient.tel}</td>
                     </tr>
                 ))}
                 </tbody>

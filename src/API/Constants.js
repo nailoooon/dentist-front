@@ -6,6 +6,8 @@ export const CONFIG = {
     }
 };
 
+export const LoadingData = 'Загружаем данные...'
+
 export const LogOut = () => {localStorage.removeItem("token")}
 export const IsAuth = () => {return localStorage.getItem("token")}
 

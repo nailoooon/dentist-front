@@ -5,6 +5,9 @@ import MainPage from "./mainPage/MainPage";
 import LoginPage from "./login/loginPage";
 import AdminPage from "./adminPage/AdminPage";
 import PatientPage from "./adminPage/patientPage/patientPage";
+import AppointmentPage from "./adminPage/appointmentPage/appointmentPage";
+import StaffPage from "./adminPage/staffPage/staffPage";
+import ServicePage from "./adminPage/servicePage/servicePage";
 
 const Pages = () => {
     return (
@@ -13,6 +16,9 @@ const Pages = () => {
             <Route path={'/login'} element={<LoginPage/>} />
             <Route path={'/admin'} element={<AdminPage/>}>
                 <Route path={'patient'} element={<PatientPage />}/>
+                <Route path={'appointment'} element={<AppointmentPage />}/>
+                <Route path={'staff'} element={<StaffPage />}/>
+                <Route path={'service'} element={<ServicePage />}/>
             </Route>
             <Route path={'/patient'} element={<PatientPage />}/>
         </Routes>
