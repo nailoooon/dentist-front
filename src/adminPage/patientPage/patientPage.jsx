@@ -1,5 +1,5 @@
 import React, {useState, useEffect } from 'react';
-import styles from './patientPage.module.css'
+import styles from '../tableCSS/table.module.css'
 import {CONFIG, LoadingData, SERVER_NAME} from "../../API/Constants";
 import axios from "axios";
 
@@ -39,22 +39,22 @@ const PatientPage = () => {
 
 
     return (
-        <div className={styles.patientsPage}>
-            <h1 className={styles.pageTitle}>Patients</h1>
+        <div className={styles.page}>
+            <h1 className={styles.pageTitle}>Пациенты</h1>
             <table className={styles.table}>
                 <thead>
                 <tr>
-                    <th className={styles.th_style}>Full Name</th>
-                    <th className={styles.th_style}>Email</th>
-                    <th className={styles.th_style}>Cell Number</th>
+                    <th>Полное имя</th>
+                    <th>Почта</th>
+                    <th>Телефон</th>
                 </tr>
                 </thead>
                 <tbody>
                 {patients.map(patient => (
                     <tr key={patient.id}>
-                        <td className={styles.th_td_style}>{patient.fullname}</td>
-                        <td className={styles.th_td_style}>{patient.email}</td>
-                        <td className={styles.th_td_style}>{patient.tel}</td>
+                        <td>{patient.fullname}</td>
+                        <td >{patient.email}</td>
+                        <td>{patient.tel}</td>
                     </tr>
                 ))}
                 </tbody>

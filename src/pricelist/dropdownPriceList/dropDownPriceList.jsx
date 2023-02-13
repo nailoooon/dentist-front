@@ -7,7 +7,7 @@ import axios from "axios";
 const DropDownPriceList = () => {
 
     const [state, setState] = useState([
-        {name: "Загрузка...", subSectors: [
+        {_id: 0, name: "Загрузка...", subSectors: [
             {name: "Загрузка...", services: [
                     {name: "Загрузка...", price: 0},
                 ]},
@@ -16,7 +16,7 @@ const DropDownPriceList = () => {
                 ]},
             ]
         },
-        {name: "Загрузка...", subSectors: [
+        {_id: 1, name: "Загрузка...", subSectors: [
                 {name: "Загрузка...", services: [
                         {name: "Загрузка...", price: 0},
                     ]},
@@ -28,7 +28,6 @@ const DropDownPriceList = () => {
         const apiUrl = SERVER_NAME + "service/sector";
         axios.get(apiUrl, CONFIG).then((resp) => {
             const data = resp.data;
-            console.log(data)
             setState(data);
         });
     }, [setState]);
@@ -36,7 +35,7 @@ const DropDownPriceList = () => {
     return (
         <div>
             {state.map(obj => {
-                return <DropDownHeader item={obj}/>
+                return <DropDownHeader key={obj._id} item={obj}/>
             })}
         </div>
     );

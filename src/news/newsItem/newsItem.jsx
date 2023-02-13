@@ -6,9 +6,17 @@ import styles from "../news.module.css";
 import {CONFIG, SERVER_NAME} from "../../API/Constants";
 import {useEffect, useState} from "react";
 import axios from "axios";
-
 const NewsItem = ({news}) => {
+    const limit = 600;
 
+    const [isFull, setFull] = useState(news.text.length <= limit)
+    const [text, setText] = useState(news.text.length > limit ? news.text.slice(0, limit - 20) + "... " : news.text)
+
+    const changeText = () => {
+        if (isFull) setText(news.text.slice(0, limit - 20) + "... ")
+        else setText(news.text)
+        setFull(prev => !prev)
+    }
 
     const [image, setImage] = useState()
     const [isLoaded, setLoaded] = useState(false)
@@ -31,7 +39,6 @@ const NewsItem = ({news}) => {
     return (
         <Col>
             <Card body className={styles.news__card}>
-
                 <CardImg className={styles.news__img}
                          src={image ? 'data:image/png;base64,' + image : ""}/>
                 <CardBody>
@@ -39,7 +46,10 @@ const NewsItem = ({news}) => {
                         {news.title}
                     </CardTitle>
                     <CardText>
-                        {news.text}
+                        {text}
+                        <span  onClick={changeText} style={{color: 'blue'}}>
+                            {!isFull ? "[Читать дальше]" : "[Скрыть]"}
+                        </span>
                     </CardText>
                     <CardText className={styles.news__date}>
                     26.08.22

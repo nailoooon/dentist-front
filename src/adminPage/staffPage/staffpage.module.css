@@ -38,6 +38,37 @@
     object-fit: cover;
 }
 
+
+.disabledButton {
+    padding: 5px 10px;
+    background-color: #b7a9a9;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.editButton {
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.deleteButton {
+    padding: 5px 10px;
+    background-color: #ef0707;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.editButton:hover {
+    background-color: #3e8e41;
+}
+.deleteButton:hover {
+    background-color: #8d0404;
+}
+
 @media (max-width: 575.98px) {
     .table {
         display: block;

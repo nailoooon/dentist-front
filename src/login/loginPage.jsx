@@ -18,11 +18,17 @@ const LoginPage = () => {
         axios.post(SERVER_NAME + "user/auth", {login: username, password: password})
             .then(res => {
                 const token = res.data
-                if (!token) localStorage.removeItem("token")
+                if (!token) {
+                    LogOut()
+                    navigate('/')
+                }
+                localStorage.setItem('token', token)
+                navigate('/admin')
+            })
+            .catch(() => {
                 LogOut()
                 navigate('/')
             })
-            .catch(LogOut())
     };
 
     if (IsAuth()) {navigate("/")}

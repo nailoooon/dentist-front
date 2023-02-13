@@ -1,17 +1,13 @@
 import React from 'react';
-import styles from './staffpage.module.css'
+import styles from '../tableCSS/table.module.css'
 import {useEffect, useState} from "react";
 import {CONFIG, LoadingData, SERVER_NAME} from "../../API/Constants";
 import axios from "axios";
 import MemberItem from "./membarItem";
+import AddStaffForm from "./addStaffForm/addStaffForm";
 
 const StaffPage = () => {
 
-    const [image, setImage] = useState(new Map())
-    const addImage = (k, v) => {
-        setImage(image.set(k, v))
-
-    }
 
     const [staff, setStaff] = useState([
         {
@@ -40,6 +36,8 @@ const StaffPage = () => {
         },
     ])
 
+    const [willBeDeleted, setWillBeDeleted] = useState([])
+
     useEffect(() => {
         const apiUrl = SERVER_NAME + "doctor";
         axios.get(apiUrl, CONFIG).then((resp) => {
@@ -49,53 +47,41 @@ const StaffPage = () => {
     }, [setStaff]);
 
 
-    useEffect(() => {
-        console.log("upload images")
-        const apiUrl = SERVER_NAME + "image/";
-        staff.forEach(member => {
-            if (member.image && !image.has(member._id)) {
-                axios.get(apiUrl + member.image, CONFIG).then((res) => {
-                    console.log(res.data.file.data)
-                    addImage(member._id, toBase64(res.data.file.data))
-                    member = {...member, newImage: 'image'}
-                })
-            }
-        })
-        setStaff(staff)
-    }, [staff])
-
-    console.log(staff)
-
-
-    function toBase64(arr) {
-        return btoa(arr.reduce((data, byte) => data + String.fromCharCode(byte), ''))
-    }
 
     const handleDelete = id => {
-        setStaff(staff.filter(member => {
-            return  member._id !== id
-        }));
+        if (willBeDeleted.includes(id)) return console.log("удаляется")
+        const apiUrl = SERVER_NAME + "doctor/" + id;
+        setWillBeDeleted([...willBeDeleted, id])
+        axios.delete(apiUrl, CONFIG).then(res => {
+            setStaff(staff.filter(member => {
+                return  member._id !== id
+            }))
+            console.log(res)
+        })
     };
 
     return (
-        <div className={styles.staffPage}>
+        <div className={styles.page}>
             <h1 className={styles.pageTitle}>Staff</h1>
             <table className={styles.table}>
                 <thead>
                 <tr>
-                    <th>Full Name</th>
-                    <th>Position</th>
-                    <th>Specialization</th>
-                    <th>dentistry</th>
+                    <th>Фото</th>
+                    <th>Имя и фамилия</th>
+                    <th>Специальность</th>
+                    <th>Стоматология</th>
+                    <th>Действия</th>
                 </tr>
                 </thead>
                 <tbody>
                 {staff.map(member => (
                     <MemberItem key={member._id} member={member}
-                                handleDelete={handleDelete} image={image.get(member._id)}/>
+                                handleDelete={handleDelete} />
                 ))}
                 </tbody>
             </table>
+
+            <AddStaffForm />
         </div>
     );
 };

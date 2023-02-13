@@ -2,7 +2,7 @@ import React from 'react';
 import styles from "../adminPage.module.css";
 import {Link} from "react-router-dom";
 
-const CardAdminItem = ({title, text, linkText, linkRef}) => {
+const CardAdminItem = ({title, text, linkText= "Перейти", linkRef }) => {
     return (
         <div className={styles.card}>
             <h2 className={styles.cardTitle}>{title}</h2>

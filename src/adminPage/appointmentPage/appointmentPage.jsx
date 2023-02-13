@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import styles from './appointmentPage.module.css'
+import styles from '../tableCSS/table.module.css'
 import {CONFIG, LoadingData, SERVER_NAME} from "../../API/Constants";
 import axios from "axios";
-import {set} from "2gis-maps/gulp/util/projectList";
+import AppointmentItem from "./appointmentItem";
 
 const AppointmentPage = () => {
     const [appointments, setAppointment] = useState([
@@ -36,34 +36,39 @@ const AppointmentPage = () => {
         });
     }, [setAppointment]);
 
+    const [willBeDeleted, setWillBeDeleted] = useState([])
+
+    const handleDelete = id => {
+        if (willBeDeleted.includes(id)) return console.log("удаляется")
+        const apiUrl = SERVER_NAME + "appointment/" + id;
+        setWillBeDeleted([...willBeDeleted, id])
+        axios.delete(apiUrl, CONFIG).then(res => {
+            setAppointment(appointments.filter(ap => {
+                return ap._id !== id
+            }))
+        })
+    };
+
     return (
-        <div className={styles.appointmentsPage}>
-            <h1 className={styles.pageTitle}>Appointments</h1>
+        <div className={styles.page}>
+            <h1 className={styles.pageTitle}>Записи</h1>
             <table className={styles.table}>
                 <thead>
                 <tr>
-                    <th>Patient Full Name</th>
-                    <th>Patient Email</th>
-                    <th>Patient Cell Number</th>
-                    <th>Doctor Full Name</th>
-                    <th>Doctor Specialization</th>
-                    <th>Dentistry Name</th>
-                    <th>Service</th>
-                    <th>Total Price</th>
+                    <th>Полное имя клиента</th>
+                    <th>Почта клиента</th>
+                    <th>Телефон клиента</th>
+                    <th>Полное имя врача</th>
+                    <th>Специальность</th>
+                    <th>Стоматология</th>
+                    <th>Услуга</th>
+                    <th>Сумма (в тенге)</th>
+                    <th>Действия</th>
                 </tr>
                 </thead>
                 <tbody>
                 {appointments.map(appointment => (
-                    <tr key={appointment.id}>
-                        <td>{appointment.patient.fullname}</td>
-                        <td>{appointment.patient.email}</td>
-                        <td>{appointment.patient.tel}</td>
-                        <td>{appointment.doctor.firstname + ' ' + appointment.doctor.lastname}</td>
-                        <td>{appointment.doctor.specialization_name}</td>
-                        <td>{appointment.doctor.dentistry}</td>
-                        <td>{'service'}</td>
-                        <td>{appointment.total_price}</td>
-                    </tr>
+                    <AppointmentItem key={appointment._id} appointment={appointment} handleDelete={handleDelete}/>
                 ))}
                 </tbody>
             </table>
