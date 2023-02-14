@@ -2,7 +2,7 @@ import React from 'react';
 import styles from '../services/services.module.css'
 import DropDownPriceList from "../pricelist/dropdownPriceList/dropDownPriceList";
 
-const Services = () => {
+const Services = ({selectedDentistry}) => {
     return (
         <div id={"services"}>
             <div className={styles.services}>
@@ -13,7 +13,7 @@ const Services = () => {
                     ______
                 </div>
             </div>
-            <DropDownPriceList/>
+            <DropDownPriceList selectedDentistry={selectedDentistry}/>
         </div>
     );
 };

@@ -14,26 +14,46 @@ import axios from "axios";
 const MainPage = () => {
 
     const [dentistry, setDentistry] = useState([])
+    const [selectedDentistry, setSelectedDentistry] = useState(null)
 
     useEffect(() => {
         const apiUrl = SERVER_NAME + 'dentistry'
         axios.get(apiUrl, CONFIG).then(res => {
             const data = res.data
-            setDentistry(data.filter(d => d.address))
+            const filterData = data.filter(d => d.address)
+            setDentistry(filterData)
+            setSelectedDentistry(filterData[0])
         })
     }, [setDentistry])
 
+    console.log(selectedDentistry)
+
+    const [news, setNews] = useState([]);
+
+    useEffect(() => {
+        const apiUrl = SERVER_NAME + "news";
+        axios.get(apiUrl, CONFIG).then((resp) => {
+            const allNews = resp.data;
+            setNews(allNews);
+        });
+    }, [setNews]);
+
+    const handleSelectDentistry = (index) => {
+        console.log(index)
+        setSelectedDentistry(dentistry[index])
+    }
+
     return (
         <div>
-            <Header dentistry={dentistry}/>
+            <Header dentistry={dentistry} handleSelectedDentistry={handleSelectDentistry}/>
             <Welcome/>
             <About/>
             <Advantages/>
-            <Services/>
-            <Doctors/>
-            <News/>
-            <MyMap/>
-            <Footer/>
+            <Services selectedDentistry={selectedDentistry}/>
+            <Doctors selectedDentistry={selectedDentistry}/>
+            <News news={news}/>
+            <MyMap selectedDentistry={selectedDentistry}/>
+            <Footer selectedDentistry={selectedDentistry}/>
         </div>
     );
 };

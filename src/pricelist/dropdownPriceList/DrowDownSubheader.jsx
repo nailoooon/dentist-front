@@ -26,7 +26,7 @@ const DrowDownSubheader = ({item}) => {
                             </div>
                         </div>
                         {item.services.map(obj => {
-                                return <NameAndPrice name={obj.name} price={obj.price}/>
+                                return <NameAndPrice key={obj._id} name={obj.name} price={obj.price}/>
                             }
                         )}
                     </div>

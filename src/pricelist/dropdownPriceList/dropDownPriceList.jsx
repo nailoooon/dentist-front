@@ -4,33 +4,36 @@ import {useEffect} from "react";
 import {CONFIG, SERVER_NAME} from "../../API/Constants";
 import axios from "axios";
 
-const DropDownPriceList = () => {
+const DropDownPriceList = ({selectedDentistry}) => {
 
     const [state, setState] = useState([
         {_id: 0, name: "Загрузка...", subSectors: [
-            {name: "Загрузка...", services: [
-                    {name: "Загрузка...", price: 0},
+            {_id: 0, name: "Загрузка...", services: [
+                    {_id: 0, name: "Загрузка...", price: 0},
                 ]},
-            {name: "Загрузка...", services: [
-                    {name: "Загрузка...", price: 0},
+            {_id: 1, name: "Загрузка...", services: [
+                    {_id: 0, name: "Загрузка...", price: 0},
                 ]},
             ]
         },
         {_id: 1, name: "Загрузка...", subSectors: [
-                {name: "Загрузка...", services: [
+                {_id: 1, name: "Загрузка...", services: [
                         {name: "Загрузка...", price: 0},
                     ]},
             ]
         },
     ])
 
+    console.log(selectedDentistry)
+
     useEffect(() => {
-        const apiUrl = SERVER_NAME + "service/sector";
+        if (!selectedDentistry) return
+        const apiUrl = SERVER_NAME + "service/sector/" + selectedDentistry._id;
         axios.get(apiUrl, CONFIG).then((resp) => {
             const data = resp.data;
             setState(data);
         });
-    }, [setState]);
+    }, [setState, selectedDentistry]);
 
     return (
         <div>

@@ -14,7 +14,7 @@ import logo from '../images/logo.jpg'
 import {BsFillTelephoneFill, BsWhatsapp} from "react-icons/bs";
 import {FiMapPin} from "react-icons/fi";
 
-function Header({dentistry}){
+function Header({dentistry, handleSelectedDentistry}){
     const [isOpen, setIsOpen] = useState(false);
 
     const toggle = () => setIsOpen(!isOpen);
@@ -63,9 +63,9 @@ function Header({dentistry}){
                                 Адрес
                             </DropdownToggle>
                             <DropdownMenu>
-                                {dentistry.map(d =>
+                                {dentistry.map((d, index) =>
                                     <DropdownItem key={d._id}>
-                                        <NavLink href="tel: +7 702 920 6161" style={{color: "black"}}>
+                                        <NavLink href="#" style={{color: "black"}} onClick={() => handleSelectedDentistry(index)}>
                                             <FiMapPin style={{color: "#3caaf7"}}/> {d.address}
                                         </NavLink>
                                     </DropdownItem>

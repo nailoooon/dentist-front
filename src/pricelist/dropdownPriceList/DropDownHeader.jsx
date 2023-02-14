@@ -5,8 +5,6 @@ import styles from "../pricelist.module.css"
 
 const DropDownHeader = ({item}) => {
 
-    console.log(item)
-
     const [isOpen, setIsOpen] = useState(false)
 
     const toggle = () => setIsOpen(prevState => !prevState)
@@ -20,7 +18,7 @@ const DropDownHeader = ({item}) => {
                 isOpen && (
                     <div>
                         {item.subSectors.map(obj => {
-                            return <DrowDownSubheader item={obj}/>
+                            return <DrowDownSubheader key={obj._id} item={obj}/>
                         })}
                     </div>
                 )

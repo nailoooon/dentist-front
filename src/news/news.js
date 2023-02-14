@@ -7,17 +7,9 @@ import axios from "axios";
 import NewsItem from "./newsItem/newsItem";
 import loading from '../images/loader.gif'
 
-const News = () => {
+const News = ({news}) => {
 
-    const [news, setNews] = useState([]);
 
-    useEffect(() => {
-        const apiUrl = SERVER_NAME + "news";
-        axios.get(apiUrl, CONFIG).then((resp) => {
-            const allNews = resp.data;
-            setNews(allNews);
-        });
-    }, [setNews]);
 
 
     return (
