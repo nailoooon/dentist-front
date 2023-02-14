@@ -35,7 +35,7 @@ const LoginPage = () => {
 
     return (
         <form className={styles.loginForm} onSubmit={handleSubmit}>
-            <h1 className={styles.formTitle}>Ввойдите в аккаунт</h1>
+            <h1 className={styles.formTitle}>Войдите в аккаунт</h1>
             <div className={styles.formGroup}>
                 <label htmlFor="username">Логин:</label>
                 <input

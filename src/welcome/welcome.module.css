@@ -1,10 +1,10 @@
 .welcome{
     overflow: hidden;
-    width: 100vw;
+    width: 100vm;
     height: 100vh;
     background-image: url("/src/images/mainImage4.jpg");
     background-repeat: no-repeat;
-    background-size: auto;
+    background-size: cover;
     display: flex;
     align-items: flex-start;
     padding: 100px;

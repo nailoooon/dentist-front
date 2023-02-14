@@ -12,15 +12,16 @@ import {
 } from 'reactstrap';
 import logo from '../images/logo.jpg'
 import {BsFillTelephoneFill, BsWhatsapp} from "react-icons/bs";
+import {FiMapPin} from "react-icons/fi";
 
-function Header(args){
+function Header({dentistry}){
     const [isOpen, setIsOpen] = useState(false);
 
     const toggle = () => setIsOpen(!isOpen);
 
     return (
         <div className={styles.header}>
-            <Navbar{...args} className={styles.header__navbar}>
+            <Navbar className={styles.header__navbar}>
                 <NavbarBrand href="/">
                     <img alt={"logo"} src={logo} className={styles.header__logo}/>
                 </NavbarBrand>
@@ -55,6 +56,21 @@ function Header(args){
                                         <BsWhatsapp style={{color: "3caaf7", fontSize: "large"}}/> Написать на WhatsApp
                                     </NavLink>
                                 </DropdownItem>
+                            </DropdownMenu>
+                        </UncontrolledDropdown>
+                        <UncontrolledDropdown nav>
+                            <DropdownToggle nav caret style={{color: "black"}}>
+                                Адрес
+                            </DropdownToggle>
+                            <DropdownMenu>
+                                {dentistry.map(d =>
+                                    <DropdownItem key={d._id}>
+                                        <NavLink href="tel: +7 702 920 6161" style={{color: "black"}}>
+                                            <FiMapPin style={{color: "#3caaf7"}}/> {d.address}
+                                        </NavLink>
+                                    </DropdownItem>
+                                )}
+
                             </DropdownMenu>
                         </UncontrolledDropdown>
                     </Nav>

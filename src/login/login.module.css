@@ -1,13 +1,14 @@
 .loginForm {
     width: 500px;
     margin: 0 auto;
-    text-align: center;
+
 }
 
 .formTitle {
     margin-bottom: 1rem;
     font-size: 2rem;
     font-weight: bold;
+    text-align: center;
 }
 
 .formGroup {
