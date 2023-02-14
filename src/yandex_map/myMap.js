@@ -1,12 +1,14 @@
-import React from "react";
+import React, {useState} from "react";
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import styles from './myMap.module.css'
-import {BsFillTelephoneFill, BsWhatsapp} from "react-icons/bs";
-import {NavLink} from "reactstrap";
-import {HiMapPin} from "react-icons/hi2";
-import {FiMapPin} from "react-icons/fi";
+import {Button} from "reactstrap";
 
 const MyMap = () => {
+
+    const [dentistry, setDentistry] = useState({
+        position: {x: 51.111840, y: 71.41328}
+    })
+
     return (
         <div className={styles.map}>
             <div className={styles.map__title}>
@@ -15,7 +17,7 @@ const MyMap = () => {
             <div className={styles.map__divider}>
                 ______
             </div>
-            <MapContainer style={{height: "80vh", width: "80vw"}} center={[51.111192, 71.41304]} zoom={14.5}
+            <MapContainer style={{height: "80vh", width: "80vw"}} center={[dentistry.position.x, dentistry.position.y]} zoom={14.5}
                           scrollWheelZoom={true}>
                 <TileLayer
                     url={"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"}
@@ -24,8 +26,8 @@ const MyMap = () => {
                 <Marker
                     key={1219}
                     position={[
-                        51.111840,
-                        71.41328
+                        dentistry.position.x,
+                        dentistry.position.y
                     ]}
                 />
                 ))}

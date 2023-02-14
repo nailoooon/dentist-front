@@ -1,20 +1,54 @@
 import React, {useState} from 'react';
 import {Button, Modal, ModalBody, ModalFooter, ModalHeader} from "reactstrap";
-import News from "../../../news/news";
 import styles from "../../staffPage/addStaffForm/addSraffForm.module.css"
-import NewsItem from "../../../news/newsItem/newsItem";
 import NewsPreview from "./newsPreview";
+import loader from '../../../images/loader.gif'
 
-const NewsPageModal = ({modal, toggle}) => {
+const NewsPageModal = ({modal, toggle, image = null, submitted,
+                           pnews =
+                               {title: "",
+                                text: "",
+                                image: null}, handleSubmit}) => {
 
 
-   const [news, setNews] = useState({
-       title: "",
-       text: "",
-       image: null
-   })
+   const [news, setNews] = useState(pnews)
 
-    const handleSubmit = () => {
+    function submit(e) {
+        e.preventDefault();
+        if (isValid()) {
+            let bodyFormData = new FormData();
+            bodyFormData.append('title', news.title);
+            bodyFormData.append('text', news.text);
+            if (typeof news.image === 'object') {
+                bodyFormData.append('picture', news.image);
+            }
+            else {
+                let blob = b64toBlob(image, 'image/*')
+                let file = new File([blob], "image")
+                bodyFormData.append('picture', file);
+            }
+            handleSubmit(bodyFormData)
+        }
+    }
+
+    const b64toBlob = (b64Data, contentType='', sliceSize=512) => {
+        const byteCharacters = atob(b64Data);
+        const byteArrays = [];
+        for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+            const slice = byteCharacters.slice(offset, offset + sliceSize);
+            const byteNumbers = new Array(slice.length);
+            for (let i = 0; i < slice.length; i++) {
+                byteNumbers[i] = slice.charCodeAt(i);
+            }
+            const byteArray = new Uint8Array(byteNumbers);
+            byteArrays.push(byteArray);
+        }
+        const blob = new Blob(byteArrays, {type: contentType});
+        return blob;
+    }
+
+    const isValid = () => {
+        return news && news.title && news.text && (image || news.image)
     }
 
     return (
@@ -51,9 +85,9 @@ const NewsPageModal = ({modal, toggle}) => {
                             onChange={(e) => setNews({...news, text: e.target.value})}
                         />
                     </div>
-                    <button type="submit" className={styles.btn}>Add News</button>
+                    {submitted ? <img src={loader}/> : <button type="submit" className={styles.btn} onClick={submit}>Отправить</button>}
                 </form>
-                <NewsPreview news={news}/>
+                <NewsPreview news={news} image={image}/>
             </ModalBody>
             <ModalFooter>
                 <Button color="secondary" onClick={toggle}>закрыть</Button>

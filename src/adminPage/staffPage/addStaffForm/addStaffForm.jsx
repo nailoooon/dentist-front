@@ -14,9 +14,6 @@ const AddStaffForm = () => {
         if (submitted) return
         setSubmitted(true)
         const apiUrl = SERVER_NAME + "doctor";
-        for (let pair of object.entries()) {
-            console.log(pair[0]+ ', ' + pair[1]);
-        }
         axios.post(apiUrl,
             object, CONFIGDATA)
             .then(res => {
