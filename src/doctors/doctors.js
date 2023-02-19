@@ -2,12 +2,13 @@ import React from 'react';
 import styles from '../doctors/doctors.module.css'
 import {Button, Card, CardText, CardTitle, Col, Container, Row} from "reactstrap";
 import {useEffect, useState} from "react";
-import {CONFIG, LoadingData, SERVER_NAME} from "../API/Constants";
+import {CONFIG, LoadingData, LoadingServices, SERVER_NAME} from "../API/Constants";
 import axios from "axios";
 import DoctorItem from "./doctorItem/doctorItem";
 
-const Doctors = () => {
+const Doctors = ({selectedDentistry}) => {
 
+    const [services, setServices] = useState(LoadingServices)
     const [doctors, setDoctors] = useState([{
         _id: 0,
         firstname: LoadingData,
@@ -16,13 +17,28 @@ const Doctors = () => {
         dentistry: ''
     }]);
 
+
     useEffect(() => {
-        const apiUrl = SERVER_NAME + "doctor";
+        if (!selectedDentistry) return
+        const apiUrl = SERVER_NAME + "doctor/dentistry/" + selectedDentistry._id;
         axios.get(apiUrl, CONFIG).then((resp) => {
             const data = resp.data;
             setDoctors(data);
         });
-    }, [setDoctors]);
+    }, [setDoctors, selectedDentistry]);
+
+
+
+
+    useEffect(() => {
+        if (!selectedDentistry) return
+        console.log("request...")
+        const apiUrl = SERVER_NAME + "service/sector/" + selectedDentistry._id;
+        axios.get(apiUrl, CONFIG).then((resp) => {
+            const data = resp.data;
+            setServices(data);
+        });
+    }, [setServices, selectedDentistry]);
 
 
     return (
@@ -36,10 +52,12 @@ const Doctors = () => {
             <div className={styles.doctors__divider}>
                 ______
             </div>
+            <div>{selectedDentistry && selectedDentistry.address}</div>
             <Container>
                 <Row >
                     {doctors.map(doctor => {
-                        return <DoctorItem key={doctor._id} props={doctor} doctors={doctors}/>
+                        return <DoctorItem key={doctor._id} props={doctor} selectedDentistry={selectedDentistry}
+                                           doctors={doctors} services={services}/>
                     })}
 
                 </Row>

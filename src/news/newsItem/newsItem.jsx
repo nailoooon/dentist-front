@@ -48,11 +48,11 @@ const NewsItem = ({news}) => {
                     <CardText>
                         {text}
                         <span  onClick={changeText} style={{color: 'blue'}}>
-                            {!isFull ? "[Читать дальше]" : "[Скрыть]"}
+                            {!isFull ? "[Читать дальше]" : news.text.length > limit ? "[Скрыть]" : null}
                         </span>
                     </CardText>
                     <CardText className={styles.news__date}>
-                    26.08.22
+                    {/*26.08.22*/}
                 </CardText>
                 </CardBody>
 

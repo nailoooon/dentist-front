@@ -3,16 +3,34 @@ import {MapContainer, TileLayer, Marker, Popup, useMapEvents, useMapEvent, useMa
 import styles from './myMap.module.css'
 import {Button} from "reactstrap";
 
-const MyMap = ({selectedDentistry}) => {
+const MyMap = ({dentistry}) => {
 
-    const [dentistry, setDentistry] = useState({
-        _id: "63d39190d209c5f035078283",
-        address: "Проспект Сарыарка, 31",
-        whatsapp_number: "+7-707-739-63-12",
-        tel_number: "+7 (7172) 44-46-03",
-        position_x: "51.111840",
-        position_y: "71.41328"
-    })
+    const [index, setIndex] = useState(0)
+    const [selectedDentistry, setSelectedDentistry] = useState(null )
+
+    useEffect(() => {
+        if (isDentistryAvailable()) setSelectedDentistry(dentistry[index])
+    }, [dentistry])
+
+    const isDentistryAvailable = () => {
+        return dentistry && dentistry.length
+    }
+
+    const increase = () => {
+        let i;
+        if (index + 1 >= dentistry.length) i = 0
+        else i = index + 1
+        setIndex(i)
+        setSelectedDentistry(dentistry[i])
+    }
+
+    const decrease = () => {
+        let i;
+        if (index - 1 < 0) i = dentistry.length - 1
+        else i = index - 1
+        setIndex(i)
+        setSelectedDentistry(dentistry[i])
+    }
 
     return (
         selectedDentistry ?
@@ -24,7 +42,9 @@ const MyMap = ({selectedDentistry}) => {
                 ______
             </div>
             <div>
+                <Button disabled={!isDentistryAvailable()} onClick={decrease}>{'<'}</Button>
                 {selectedDentistry.address}
+                <Button disabled={!isDentistryAvailable()} onClick={increase}>{'>'}</Button>
             </div>
             <MapContainer style={{height: "80vh", width: "80vw"}}
                           center={[selectedDentistry.position_x,

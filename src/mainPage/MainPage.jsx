@@ -26,7 +26,6 @@ const MainPage = () => {
         })
     }, [setDentistry])
 
-    console.log(selectedDentistry)
 
     const [news, setNews] = useState([]);
 
@@ -45,14 +44,14 @@ const MainPage = () => {
 
     return (
         <div>
-            <Header dentistry={dentistry} handleSelectedDentistry={handleSelectDentistry}/>
+            <Header selectedDentistry={selectedDentistry} dentistry={dentistry} handleSelectedDentistry={handleSelectDentistry}/>
             <Welcome/>
             <About/>
             <Advantages/>
             <Services selectedDentistry={selectedDentistry}/>
             <Doctors selectedDentistry={selectedDentistry}/>
             <News news={news}/>
-            <MyMap selectedDentistry={selectedDentistry}/>
+            <MyMap dentistry={dentistry}/>
             <Footer selectedDentistry={selectedDentistry}/>
         </div>
     );

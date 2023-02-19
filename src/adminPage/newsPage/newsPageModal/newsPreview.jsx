@@ -24,7 +24,7 @@ const NewsPreview = ({news, image}) => {
                     {news.text}
                 </CardText>
                 <CardText className={styles.news__date}>
-                    26.08.22
+                    {/*26.08.22*/}
                 </CardText>
             </CardBody>
 

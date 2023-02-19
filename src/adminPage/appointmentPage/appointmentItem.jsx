@@ -1,5 +1,5 @@
-import React from 'react';
-import {CONFIG, SERVER_NAME} from "../../API/Constants";
+import React, {useEffect} from 'react';
+import {CONFIG, LoadingData, SERVER_NAME} from "../../API/Constants";
 import axios from "axios";
 import {useState} from "react";
 import loader from "../../images/loader.gif";
@@ -14,6 +14,7 @@ const AppointmentItem = ({appointment, handleDelete}) => {
         handleDelete(appointment._id)
     }
 
+
     return (
         <tr>
             <td>{appointment.patient ? appointment.patient.fullname : "Отсутствует в базе данных"}</td>
@@ -22,9 +23,8 @@ const AppointmentItem = ({appointment, handleDelete}) => {
             <td>{appointment.doctor ? (appointment.doctor.firstname + ' ' + appointment.doctor.lastname)
                 : "Отсутствует в базе данных"}</td>
             <td>{appointment.doctor ? appointment.doctor.specialization_name: "Отсутствует в базе данных"}</td>
-            <td>{appointment.doctor ? appointment.doctor.dentistry: "Отсутствует в базе данных"}</td>
-            <td>{'service'}</td>
-            <td>{appointment.total_price}</td>
+            <td>{appointment.service ? appointment.service.name : "Отсутствует в базе данных"}</td>
+            <td>{appointment.service ? appointment.service.price: 0}</td>
             <td>
                 {isDeleting ? <img src={loader}/> :
                     <button className={styles.deleteButton} onClick={selfDelete}>Удалить</button>}

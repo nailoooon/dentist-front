@@ -10,19 +10,19 @@ const PatientPage = () => {
 
     const [patients, setPatient] = useState([
         {
-            id: 1,
+            _id: 1,
             fullname: LoadingData,
             email: LoadingData,
             tel: LoadingData
         },
         {
-            id: 2,
+            _id: 2,
             fullname: LoadingData,
             email: LoadingData,
             tel: LoadingData
         },
         {
-            id: 3,
+            _id: 3,
             fullname: LoadingData,
             email: LoadingData,
             tel: LoadingData
@@ -51,7 +51,7 @@ const PatientPage = () => {
                 </thead>
                 <tbody>
                 {patients.map(patient => (
-                    <tr key={patient.id}>
+                    <tr key={patient._id}>
                         <td>{patient.fullname}</td>
                         <td >{patient.email}</td>
                         <td>{patient.tel}</td>

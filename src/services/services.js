@@ -1,8 +1,13 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styles from '../services/services.module.css'
 import DropDownPriceList from "../pricelist/dropdownPriceList/dropDownPriceList";
 
 const Services = ({selectedDentistry}) => {
+
+    useEffect(() => {
+        console.log("rerender")
+    }, [selectedDentistry])
+
     return (
         <div id={"services"}>
             <div className={styles.services}>
@@ -12,6 +17,7 @@ const Services = ({selectedDentistry}) => {
                 <div className={styles.serv__divider}>
                     ______
                 </div>
+                <div>{selectedDentistry && selectedDentistry.address}</div>
             </div>
             <DropDownPriceList selectedDentistry={selectedDentistry}/>
         </div>

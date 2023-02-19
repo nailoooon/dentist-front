@@ -9,6 +9,7 @@ import AppointmentPage from "./adminPage/appointmentPage/appointmentPage";
 import StaffPage from "./adminPage/staffPage/staffPage";
 import ServicePage from "./adminPage/servicePage/servicePage";
 import NewsPage from "./adminPage/newsPage/newsPage";
+import DentistryPage from "./adminPage/dentistryPage/dentistryPage";
 
 const Pages = () => {
     return (
@@ -21,6 +22,7 @@ const Pages = () => {
                 <Route path={'staff'} element={<StaffPage />}/>
                 <Route path={'service'} element={<ServicePage />}/>
                 <Route path={'news'} element={<NewsPage />}/>
+                <Route path={'dentistry'} element={<DentistryPage />}/>
             </Route>
             <Route path={'/patient'} element={<PatientPage />}/>
         </Routes>

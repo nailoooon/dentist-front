@@ -13,11 +13,9 @@ import {
 import logo from '../images/logo.jpg'
 import {BsFillTelephoneFill, BsWhatsapp} from "react-icons/bs";
 import {FiMapPin} from "react-icons/fi";
+import {LoadingData} from "../API/Constants";
 
-function Header({dentistry, handleSelectedDentistry}){
-    const [isOpen, setIsOpen] = useState(false);
-
-    const toggle = () => setIsOpen(!isOpen);
+function Header({selectedDentistry, dentistry, handleSelectedDentistry}){
 
     return (
         <div className={styles.header}>
@@ -41,35 +39,23 @@ function Header({dentistry, handleSelectedDentistry}){
                                 Услуги и цены
                             </NavLink>
                         </NavItem>
-                        <UncontrolledDropdown nav>
-                            <DropdownToggle nav caret style={{color: "black"}}>
+                        <NavItem>
+                            <NavLink href={"#footer"} style={{color: "black"}}>
                                 Контакты
-                            </DropdownToggle>
-                            <DropdownMenu>
-                                <DropdownItem>
-                                    <NavLink href="tel: +7 702 920 6161" style={{color: "black"}}>
-                                        <BsFillTelephoneFill style={{color: "3caaf7"}}/> +7 702 920 6161
-                                    </NavLink>
-                                </DropdownItem>
-                                <DropdownItem>
-                                    <NavLink href="https://api.whatsapp.com/send?phone=77029206161" style={{color: "black"}}>
-                                        <BsWhatsapp style={{color: "3caaf7", fontSize: "large"}}/> Написать на WhatsApp
-                                    </NavLink>
-                                </DropdownItem>
-                            </DropdownMenu>
-                        </UncontrolledDropdown>
+                            </NavLink>
+                        </NavItem>
                         <UncontrolledDropdown nav>
                             <DropdownToggle nav caret style={{color: "black"}}>
                                 Адрес
                             </DropdownToggle>
                             <DropdownMenu>
-                                {dentistry.map((d, index) =>
-                                    <DropdownItem key={d._id}>
+                                {dentistry.length ? dentistry.map((d, index) =>
+                                    <DropdownItem key={d._id} active={selectedDentistry._id === d._id}>
                                         <NavLink href="#" style={{color: "black"}} onClick={() => handleSelectedDentistry(index)}>
                                             <FiMapPin style={{color: "#3caaf7"}}/> {d.address}
                                         </NavLink>
                                     </DropdownItem>
-                                )}
+                                ) : <div>{LoadingData}</div>}
 
                             </DropdownMenu>
                         </UncontrolledDropdown>

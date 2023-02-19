@@ -24,10 +24,10 @@ const DropDownPriceList = ({selectedDentistry}) => {
         },
     ])
 
-    console.log(selectedDentistry)
 
     useEffect(() => {
         if (!selectedDentistry) return
+        console.log("request...")
         const apiUrl = SERVER_NAME + "service/sector/" + selectedDentistry._id;
         axios.get(apiUrl, CONFIG).then((resp) => {
             const data = resp.data;
@@ -36,11 +36,11 @@ const DropDownPriceList = ({selectedDentistry}) => {
     }, [setState, selectedDentistry]);
 
     return (
-        <div>
+        state.length ? <div>
             {state.map(obj => {
                 return <DropDownHeader key={obj._id} item={obj}/>
             })}
-        </div>
+        </div> : <div style={{textAlign: 'center', color: 'red', fontSize: '18px'}}>Нет услуг</div>
     );
 };
 

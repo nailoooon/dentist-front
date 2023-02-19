@@ -11,11 +11,17 @@ import {
     Input,
     DropdownItem, DropdownMenu, DropdownToggle, Dropdown
 } from 'reactstrap';
-import styles from "../../adminPage/staffPage/addStaffForm/addSraffForm.module.css";
 import axios from "axios";
 import {CONFIG, SERVER_NAME} from "../../API/Constants";
+import ServiceListModal from "../../adminPage/modals/serviceModal/ServiceListModal";
+import loader from '../../images/loader.gif'
 
-const AppointmentModal = ({modal, toggle, doctors, services = [], sDoctor = null}) => {
+const AppointmentModal = ({modal, toggle, doctors,
+                              services = [], sDoctor = null}) => {
+
+    const [submitted, setSubmitted] = useState(false)
+    const [serviceModal, setServiceModal] = useState(false)
+    const [selectedService, setSelectedService] = useState(null)
 
     const [fullName, setFullName] = useState('')
     const [email, setEmail] = useState('')
@@ -27,12 +33,20 @@ const AppointmentModal = ({modal, toggle, doctors, services = [], sDoctor = null
     let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     const isValid = () => {
-        return  fullName.split(' ').length >= 2 && selectedDoctor && cellNumber && email && isEmailValid()
+        return  fullName.split(' ').length >= 2 && selectedDoctor && cellNumber && email && isEmailValid() && selectedService
     }
+
+    const toggleService = () => setServiceModal(!serviceModal)
 
     const isEmailValid = () => {
         return re.test(email)
     }
+
+    const closeBtn = (
+        <button className="close" onClick={toggleService} type="button">
+            &times;
+        </button>
+    );
 
     const isEnable = isValid()
 
@@ -48,12 +62,19 @@ const AppointmentModal = ({modal, toggle, doctors, services = [], sDoctor = null
                 tel: cellNumber,
                 fullname: fullName
             },
-            doctor_id: selectedDoctor._id
+            doctor_id: selectedDoctor._id,
+            service_id: selectedService._id
         }
+        setSubmitted(true)
         const api = SERVER_NAME + 'appointment'
         axios.post(api, appointment, CONFIG).then(res => {
             console.log(res)
-        })
+        }).finally(() => setSubmitted(false))
+    }
+
+    const handleChoose = (item) => {
+        setSelectedService(item)
+        toggleService()
     }
 
     return (
@@ -70,7 +91,7 @@ const AppointmentModal = ({modal, toggle, doctors, services = [], sDoctor = null
                         <FormGroup>
                             <Label for="email">Электронная почта
                             </Label>
-                            <span style={{color: 'red'}}>{isEmailValid() ? '' : ' invalid email'}</span>
+                            <span style={{color: 'red'}}>{isEmailValid() ? '' : ' Неправильная почта'}</span>
                             <Input type="email" name="email" id="email" placeholder="Укажите эл. почту"
                                    value={email} onChange={e => setEmail(e.target.value)}/>
                         </FormGroup>
@@ -81,12 +102,8 @@ const AppointmentModal = ({modal, toggle, doctors, services = [], sDoctor = null
                         </FormGroup>
                         <FormGroup>
                             <Label for="service">Услуга</Label>
-                            <Input type="select" name="service" id="service">
-                                <option>Option 1</option>
-                                <option>Option 2</option>
-                                <option>Option 3</option>
-                                <option>Option 4</option>
-                            </Input>
+                            <Input type={'button'} color={'success'}
+                                   onClick={toggleService} value={selectedService ? selectedService.name : "Не выбрано"}/>
                         </FormGroup>
                         <FormGroup>
                             <Label for="doctor">Врач</Label>
@@ -105,14 +122,27 @@ const AppointmentModal = ({modal, toggle, doctors, services = [], sDoctor = null
                             </Dropdown>
                         </FormGroup>
                     </Form>
+                    <Modal isOpen={serviceModal} toggle={toggleService} fullscreen={true}>
+                        <ModalHeader close={closeBtn}>
+                            Выберите услугу
+                        </ModalHeader>
+                        <ModalBody>
+                            <ServiceListModal services={services} toggle={handleChoose} />
+                        </ModalBody>
+                    </Modal>
                 </ModalBody>
                 <ModalFooter>
-                    <Button onClick={submit} color={isEnable ? "primary": ''} disabled={!isEnable}>Отправить</Button>{' '}
-                    <Button color="secondary" onClick={toggle}>закрыть</Button>
+                    {submitted ? <img src={loader}/> :
+                        <div>
+                            <Button onClick={submit} color={isEnable ? "primary": ''} disabled={!isEnable}>Отправить</Button>{' '}
+                            <Button color="secondary" onClick={toggle}>закрыть</Button>
+                        </div>}
                 </ModalFooter>
             </Modal>
         </div>
     );
 };
+
+
 
 export default AppointmentModal;

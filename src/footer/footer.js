@@ -13,12 +13,8 @@ const Footer = ({selectedDentistry}) => {
         return str.replaceAll('-', '')
     }
 
-    console.log(selectedDentistry ?
-        selectedDentistry.whatsapp_number + "  https://api.whatsapp.com/send?phone=" + deleteSpace(selectedDentistry.whatsapp_number)
-        : "")
-
     return (
-        <div className={styles.footer}>
+        <div className={styles.footer} id={"footer"}>
             <Navbar>
                 <NavbarBrand href={"/"}>
                     <img src={logo} alt={"logo"} className={styles.footer__logo}/>

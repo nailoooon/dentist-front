@@ -9,7 +9,8 @@ import loading from '../../images/loader.gif'
 import {usePreloadImages} from "../../hooks/usePreloadImages";
 
 
-const DoctorItem = ({props, previewImage = '', doctors, modalOn = true}) => {
+const DoctorItem = ({props, previewImage = '', doctors,
+                        services, modalOn = true}) => {
 
     const [image, setImage] = useState()
     const [isLoaded, setLoaded] = useState(false)
@@ -60,7 +61,9 @@ const DoctorItem = ({props, previewImage = '', doctors, modalOn = true}) => {
                 <Button className={styles.doctors__btn} onClick={toggle}>
                     Записаться
                 </Button>
-                {modalOn && <AppointmentModal sDoctor={props} modal={modal} toggle={toggle} doctors={doctors}/>}
+                {modalOn && <AppointmentModal
+                    services={services} sDoctor={props}
+                                              modal={modal} toggle={toggle} doctors={doctors}/>}
             </Card>
         </Col>
 

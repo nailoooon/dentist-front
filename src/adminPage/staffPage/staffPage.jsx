@@ -62,7 +62,7 @@ const StaffPage = () => {
 
     return (
         <div className={styles.page}>
-            <h1 className={styles.pageTitle}>Staff</h1>
+            <h1 className={styles.pageTitle}>Врачи</h1>
             <table className={styles.table}>
                 <thead>
                 <tr>
