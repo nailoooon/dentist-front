@@ -123,7 +123,7 @@ const AppointmentModal = ({modal, toggle, doctors,
                         </FormGroup>
                     </Form>
                     <Modal isOpen={serviceModal} toggle={toggleService} fullscreen={true}>
-                        <ModalHeader close={closeBtn}>
+                        <ModalHeader style={{textAlign:"center"}} close={closeBtn}>
                             Выберите услугу
                         </ModalHeader>
                         <ModalBody>
@@ -134,8 +134,8 @@ const AppointmentModal = ({modal, toggle, doctors,
                 <ModalFooter>
                     {submitted ? <img src={loader}/> :
                         <div>
-                            <Button onClick={submit} color={isEnable ? "primary": ''} disabled={!isEnable}>Отправить</Button>{' '}
-                            <Button color="secondary" onClick={toggle}>закрыть</Button>
+                            <Button color="secondary" onClick={toggle}>Закрыть</Button>{' '}
+                            <Button onClick={submit} color={isEnable ? "primary": ''} disabled={!isEnable}>Отправить</Button>
                         </div>}
                 </ModalFooter>
             </Modal>

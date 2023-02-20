@@ -21,6 +21,11 @@
 
 }
 
+.address{
+    margin: 15px 0;
+    font-size: x-large;
+}
+
 .serv__card{
     height: auto;
     display: flex;

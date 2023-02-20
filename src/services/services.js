@@ -17,7 +17,7 @@ const Services = ({selectedDentistry}) => {
                 <div className={styles.serv__divider}>
                     ______
                 </div>
-                <div>{selectedDentistry && selectedDentistry.address}</div>
+                <div className={styles.address}>{selectedDentistry && selectedDentistry.address}</div>
             </div>
             <DropDownPriceList selectedDentistry={selectedDentistry}/>
         </div>

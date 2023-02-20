@@ -41,10 +41,12 @@ const MyMap = ({dentistry}) => {
             <div className={styles.map__divider}>
                 ______
             </div>
-            <div>
-                <Button disabled={!isDentistryAvailable()} onClick={decrease}>{'<'}</Button>
-                {selectedDentistry.address}
-                <Button disabled={!isDentistryAvailable()} onClick={increase}>{'>'}</Button>
+            <div style={{display: "flex", alignItems:"center", marginBottom:"15px"}}>
+                <Button className={styles.selectButton} disabled={!isDentistryAvailable()} onClick={decrease}>{'<'}</Button>
+                    <div className={styles.selectAddress}>
+                        {selectedDentistry.address}
+                    </div>
+                <Button className={styles.selectButton} disabled={!isDentistryAvailable()} onClick={increase}>{'>'}</Button>
             </div>
             <MapContainer style={{height: "80vh", width: "80vw"}}
                           center={[selectedDentistry.position_x,

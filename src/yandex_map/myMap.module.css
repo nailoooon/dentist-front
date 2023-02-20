@@ -25,6 +25,24 @@
     margin-bottom: 20px;
 }
 
+.selectButton{
+    background-color: #3caaf7;
+    border: none;
+    font-size: x-large;
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin: 0 40px;
+}
+
+.selectButton:hover{
+    background-color: #007bff;
+}
+
+.selectAddress{
+    font-size: x-large;
+    font-weight: 400;
+}
+
 .map__sub{
     font-size: large;
     font-weight: normal;

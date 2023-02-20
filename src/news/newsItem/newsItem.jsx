@@ -47,7 +47,7 @@ const NewsItem = ({news}) => {
                     </CardTitle>
                     <CardText>
                         {text}
-                        <span  onClick={changeText} style={{color: 'blue'}}>
+                        <span  onClick={changeText} style={{color: '#3caaf7'}}>
                             {!isFull ? "[Читать дальше]" : news.text.length > limit ? "[Скрыть]" : null}
                         </span>
                     </CardText>

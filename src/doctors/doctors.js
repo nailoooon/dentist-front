@@ -52,7 +52,7 @@ const Doctors = ({selectedDentistry}) => {
             <div className={styles.doctors__divider}>
                 ______
             </div>
-            <div>{selectedDentistry && selectedDentistry.address}</div>
+            <div style={{marginBottom:"20px", fontSize:"x-large"}}>{selectedDentistry && selectedDentistry.address}</div>
             <Container>
                 <Row >
                     {doctors.map(doctor => {

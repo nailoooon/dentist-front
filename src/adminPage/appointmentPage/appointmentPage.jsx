@@ -57,11 +57,11 @@ const AppointmentPage = () => {
     return (
         <div className={styles.page}>
             <h1 className={styles.pageTitle}>Записи</h1>
-            <div style={{paddingRight: '30px'}}>
+            <div style={{ fontSize: "larger"}}>
                 {selectedDentistry && selectedDentistry.address}
             </div>
             <UncontrolledDropdown>
-                <DropdownToggle nav caret style={{color: "black"}}>
+                <DropdownToggle nav caret style={{color: "black", fontSize: "medium", marginBottom:"20px"}}>
                     Адрес
                 </DropdownToggle>
                 <DropdownMenu>
