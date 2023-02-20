@@ -1,7 +1,7 @@
 {
   "name": "dent",
   "version": "0.1.0",
-  "homepage": "https://nailoooon.github.io/dentist-front",
+  "homepage": ".",
   "private": true,
   "dependencies": {
     "@babel/runtime": "^7.20.13",
