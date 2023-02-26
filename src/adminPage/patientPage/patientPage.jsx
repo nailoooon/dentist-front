@@ -6,7 +6,6 @@ import axios from "axios";
 const PatientPage = () => {
 
     const [image, setImage] = useState(new Map())
-    const addImage = (k, v) => setImage(image.set(k, v))
 
     const [patients, setPatient] = useState([
         {
@@ -40,6 +39,7 @@ const PatientPage = () => {
 
     return (
         <div className={styles.page}>
+
             <h1 className={styles.pageTitle}>Пациенты</h1>
             <table className={styles.table}>
                 <thead>

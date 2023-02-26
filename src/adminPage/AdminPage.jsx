@@ -3,6 +3,7 @@ import {IsAuth} from "../API/Constants";
 import styles from './adminPage.module.css'
 import {Outlet, useNavigate} from "react-router-dom";
 import CardAdminItem from "./cardAdmin/CardAdminItem";
+import loader from '../images/loader.gif'
 
 const AdminPage = () => {
 
@@ -19,6 +20,7 @@ const AdminPage = () => {
     return (
         <div>
             <div className={styles.adminPage}>
+                <img src={loader}/>
                 <h1 className={styles.pageTitle}>Admin Panel</h1>
                 <div className={styles.cardContainer}>
                     <CardAdminItem title={"Записи"} text={"Мониторинг записей."}

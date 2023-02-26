@@ -60,7 +60,10 @@ const NewsPage = () => {
 
     return (
         <div className={styles.page}>
-            <h1 className={styles.pageTitle}>Новости</h1>
+            <div style={{display: "flex", flexDirection: "row"}}>
+                <h1 className={styles.pageTitle}>Новости</h1>
+                <div style={{marginTop: "40px"}}>asd</div>
+            </div>
             <Button color={'primary'} onClick={toggle}><h6>Добавить</h6></Button>
             {news.length ? <Container>
                 <Row xs={1}>
