@@ -17,12 +17,12 @@ const Pages = () => {
             <Route path={'/'} element={<MainPage/>} />
             <Route path={'/login'} element={<LoginPage/>} />
             <Route path={'/admin'} element={<AdminPage/>}>
-                <Route path={'patient'} element={<PatientPage />}/>
-                <Route path={'appointment'} element={<AppointmentPage />}/>
-                <Route path={'staff'} element={<StaffPage />}/>
-                <Route path={'service'} element={<ServicePage />}/>
-                <Route path={'news'} element={<NewsPage />}/>
-                <Route path={'dentistry'} element={<DentistryPage />}/>
+                {/*<Route path={'patient'} element={<PatientPage />}/>*/}
+                {/*<Route path={'appointment'} element={<AppointmentPage />}/>*/}
+                {/*<Route path={'staff'} element={<StaffPage />}/>*/}
+                {/*<Route path={'service'} element={<ServicePage />}/>*/}
+                {/*<Route path={'news'} element={<NewsPage />}/>*/}
+                {/*<Route path={'dentistry'} element={<DentistryPage />}/>*/}
             </Route>
             <Route path={'/patient'} element={<PatientPage />}/>
         </Routes>

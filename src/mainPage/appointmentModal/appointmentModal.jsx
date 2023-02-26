@@ -19,6 +19,7 @@ import loader from '../../images/loader.gif'
 const AppointmentModal = ({modal, toggle, doctors,
                               services = [], sDoctor = null}) => {
 
+    const [responseStatus, setResponseStatus] = useState(0)
     const [submitted, setSubmitted] = useState(false)
     const [serviceModal, setServiceModal] = useState(false)
     const [selectedService, setSelectedService] = useState(null)
@@ -68,8 +69,19 @@ const AppointmentModal = ({modal, toggle, doctors,
         setSubmitted(true)
         const api = SERVER_NAME + 'appointment'
         axios.post(api, appointment, CONFIG).then(res => {
-            console.log(res)
-        }).finally(() => setSubmitted(false))
+            setResponseStatus(res.status)
+        }).catch((err) => {
+            setResponseStatus(err.response.data.statusCode)
+        }).finally((res) => {
+            setSubmitted(false)
+            clear()
+        })
+    }
+
+    const clear = () => {
+        setFullName('')
+        setEmail('')
+        setCellNumber('')
     }
 
     const handleChoose = (item) => {
@@ -137,11 +149,29 @@ const AppointmentModal = ({modal, toggle, doctors,
                             <Button color="secondary" onClick={toggle}>Закрыть</Button>{' '}
                             <Button onClick={submit} color={isEnable ? "primary": ''} disabled={!isEnable}>Отправить</Button>
                         </div>}
+                    {submitted ? null : renderStatus(responseStatus)}
                 </ModalFooter>
             </Modal>
         </div>
     );
 };
+
+const renderStatus = (statusCode) => {
+    console.log("update " + statusCode)
+    switch (statusCode) {
+        case 201:
+            return <div style={{color: 'green'}}>
+                Вы отправили запрос на запись. Мы вам перезвоним
+            </div>
+        case 500:
+            return <div style={{color: 'red'}}>
+                Упс, что-то пошло не так
+            </div>
+        default:
+            return null
+    }
+
+}
 
 
 

@@ -8,6 +8,7 @@ import loading from "../../images/loader.gif";
 import NewsForm from "./NewsForm";
 import NewsPageModal from "./newsPageModal/newsPageModal";
 import {useNavigate} from "react-router-dom";
+import {FiRefreshCcw} from "react-icons/fi";
 
 const NewsPage = () => {
 
@@ -51,20 +52,34 @@ const NewsPage = () => {
     }
 
     useEffect(() => {
+        setData()
+    }, [setNews]);
+
+    const updateData = () => {
+        setNews([])
+        setData()
+    }
+
+    const setData = () => {
         const apiUrl = SERVER_NAME + "news";
         axios.get(apiUrl, CONFIG).then((resp) => {
             const allNews = resp.data;
             setNews(allNews);
         });
-    }, [setNews]);
+    }
 
     return (
         <div className={styles.page}>
-            <div style={{display: "flex", flexDirection: "row"}}>
-                <h1 className={styles.pageTitle}>Новости</h1>
-                <div style={{marginTop: "40px"}}>asd</div>
+                <h1 className={styles.pageTitle}>
+                    Новости
+                </h1>
+
+            <div style={{display: "flex", flexDirection: "row", gap: "10px"}}>
+                <Button color={'primary'} onClick={toggle}><h6>Добавить</h6></Button>
+                <Button onClick={updateData}><h6>Обновить
+                    {/*<FiRefreshCcw/>*/}
+                </h6></Button>
             </div>
-            <Button color={'primary'} onClick={toggle}><h6>Добавить</h6></Button>
             {news.length ? <Container>
                 <Row xs={1}>
                     {news.map(item => <NewsForm key={item._id} news={item} handleDelete={handleDelete}/>)}

@@ -29,7 +29,6 @@ const MemberItem = ({member, handleDelete}) => {
         if (!dentistry && member.dentistry !== LoadingData)
             axios.get(apiUrl + member.dentistry, CONFIG).then((res) => {
                 setDentistry(res.data)
-                console.log(res.data)
             })
     }, [setDentistry])
 

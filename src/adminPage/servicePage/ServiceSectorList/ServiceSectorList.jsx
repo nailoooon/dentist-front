@@ -6,7 +6,7 @@ import {Button} from "reactstrap";
 import CreateServiceModal from "./CreateServiceModal";
 import {useNavigate} from "react-router-dom";
 
-const ServiceSectorList = ({selectedDentistry}) => {
+const ServiceSectorList = ({selectedDentistry, updateData = null}) => {
 
     const [willBeDeleted, setWillBeDeleted] = useState([])
     const [submitted, setSubmitted] = useState(false)
@@ -20,7 +20,10 @@ const ServiceSectorList = ({selectedDentistry}) => {
 
 
     useEffect(() => {
-        if (!selectedDentistry) return
+        if (!selectedDentistry) {
+            setState(LoadingServices)
+            return
+        }
         console.log("request...")
         if (state !== LoadingServices) setState(LoadingServices)
         const apiUrl = SERVER_NAME + "service/sector/" + selectedDentistry._id;
@@ -95,8 +98,11 @@ const ServiceSectorList = ({selectedDentistry}) => {
 
     return (
         <div>
-            <div style={{display: 'flex' ,justifyContent: 'center'}}>
+            <div style={{display: 'flex' ,justifyContent: 'center', gap: "10px"}}>
                 <Button color={'primary'} onClick={toggle}><h6>Добавить</h6></Button>
+                <Button onClick={updateData}><h6>Обновить
+                    {/*<FiRefreshCcw/>*/}
+                </h6></Button>
             </div>
             <CreateServiceModal isOpen={isOpen} toggle={toggle} submitted={submitted}
                                 text={"Создать"} handleSubmit={handleCreateSector}/>

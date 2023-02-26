@@ -3,7 +3,7 @@ import styles from '../tableCSS/table.module.css'
 import {CONFIG, LoadingData, SERVER_NAME} from "../../API/Constants";
 import axios from "axios";
 import AppointmentItem from "./appointmentItem";
-import {DropdownItem, DropdownMenu, DropdownToggle, NavLink, UncontrolledDropdown} from "reactstrap";
+import {Button, DropdownItem, DropdownMenu, DropdownToggle, NavLink, UncontrolledDropdown} from "reactstrap";
 import {FiMapPin} from "react-icons/fi";
 
 const AppointmentPage = () => {
@@ -34,11 +34,7 @@ const AppointmentPage = () => {
 
 
     useEffect(() => {
-        const apiUrl = SERVER_NAME + "appointment"
-        axios.get(apiUrl, CONFIG).then((resp) => {
-            const data = resp.data;
-            setAppointment(data);
-        });
+        setData()
     }, [setAppointment]);
 
     const [willBeDeleted, setWillBeDeleted] = useState([])
@@ -54,9 +50,23 @@ const AppointmentPage = () => {
         })
     };
 
+    const updateData = () => {
+        setAppointment([])
+        setData()
+    }
+
+    const setData = () => {
+        const apiUrl = SERVER_NAME + "appointment"
+        axios.get(apiUrl, CONFIG).then((resp) => {
+            const data = resp.data;
+            setAppointment(data);
+        });
+    }
+
     return (
         <div className={styles.page}>
             <h1 className={styles.pageTitle}>Записи</h1>
+
             <div style={{ fontSize: "larger"}}>
                 {selectedDentistry && selectedDentistry.address}
             </div>
@@ -75,6 +85,9 @@ const AppointmentPage = () => {
 
                 </DropdownMenu>
             </UncontrolledDropdown>
+            <Button onClick={updateData}><h6>Обновить
+                {/*<FiRefreshCcw/>*/}
+            </h6></Button>
             <table className={styles.table}>
                 <thead>
                 <tr>

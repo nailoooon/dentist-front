@@ -18,13 +18,18 @@ const DentistryPage = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
+        updateData()
+    }, [setDentistry])
+
+    const updateData = () => {
+        setDentistry([])
         const apiUrl = SERVER_NAME + 'dentistry'
         axios.get(apiUrl, CONFIG).then(res => {
             const data = res.data
             const filterData = data.filter(d => d.address)
             setDentistry(filterData)
         })
-    }, [setDentistry])
+    }
 
     const handleSubmit = (object) => {
         const api_url = SERVER_NAME + 'dentistry'
@@ -57,7 +62,12 @@ const DentistryPage = () => {
     return (
         <div className={styles.page}>
             <h1 className={styles.pageTitle}>Стоматологии</h1>
-            <Button color={'primary'} onClick={toggle}><h6>Добавить</h6></Button>
+            <div style={{display: 'flex' ,justifyContent: 'center', gap: "10px", paddingBottom: "20px"}}>
+                <Button color={'primary'} onClick={toggle}><h6>Добавить</h6></Button>
+                <Button onClick={updateData}><h6>Обновить
+                    {/*<FiRefreshCcw/>*/}
+                </h6></Button>
+            </div>
             <table className={styles.table}>
                 <thead>
                 <tr>

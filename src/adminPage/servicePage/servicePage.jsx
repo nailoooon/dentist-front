@@ -13,6 +13,12 @@ const ServicePage = () => {
     const [selectedDentistry, setSelectedDentistry] = useState(null)
 
     useEffect(() => {
+        updateData()
+    }, [setDentistry])
+
+    const updateData = () => {
+        setDentistry([])
+        setSelectedDentistry(null)
         const apiUrl = SERVER_NAME + 'dentistry'
         axios.get(apiUrl, CONFIG).then(res => {
             const data = res.data
@@ -20,7 +26,7 @@ const ServicePage = () => {
             setDentistry(filterData)
             setSelectedDentistry(filterData[0])
         })
-    }, [setDentistry])
+    }
 
     return (
         <div>
@@ -44,7 +50,7 @@ const ServicePage = () => {
                     </DropdownMenu>
                 </UncontrolledDropdown>
             </div>
-            <ServiceSectorList selectedDentistry={selectedDentistry}/>
+            <ServiceSectorList selectedDentistry={selectedDentistry} updateData={updateData}/>
         </div>
     );
 };

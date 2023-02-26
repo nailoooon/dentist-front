@@ -5,46 +5,58 @@ import {CONFIG, LoadingData, SERVER_NAME} from "../../API/Constants";
 import axios from "axios";
 import MemberItem from "./membarItem";
 import AddStaffForm from "./addStaffForm/addStaffForm";
+import {Button} from "reactstrap";
+
+const loadingStaff = [
+    {
+        _id: 1,
+        lastname: '',
+        firstname: LoadingData,
+        dentistry: LoadingData,
+        position: LoadingData,
+        specialization_name: LoadingData
+    },
+    {
+        _id: 2,
+        lastname: '',
+        firstname: LoadingData,
+        dentistry: LoadingData,
+        position: LoadingData,
+        specialization_name: LoadingData
+    },
+    {
+        _id: 3,
+        lastname: '',
+        firstname: LoadingData,
+        dentistry: LoadingData,
+        position: LoadingData,
+        specialization_name: LoadingData
+    },
+]
 
 const StaffPage = () => {
 
 
-    const [staff, setStaff] = useState([
-        {
-            _id: 1,
-            lastname: '',
-            firstname: LoadingData,
-            dentistry: LoadingData,
-            position: LoadingData,
-            specialization_name: LoadingData
-        },
-        {
-            _id: 2,
-            lastname: '',
-            firstname: LoadingData,
-            dentistry: LoadingData,
-            position: LoadingData,
-            specialization_name: LoadingData
-        },
-        {
-            _id: 3,
-            lastname: '',
-            firstname: LoadingData,
-            dentistry: LoadingData,
-            position: LoadingData,
-            specialization_name: LoadingData
-        },
-    ])
+    const [staff, setStaff] = useState(loadingStaff)
 
     const [willBeDeleted, setWillBeDeleted] = useState([])
 
     useEffect(() => {
+        setData()
+    }, [setStaff]);
+
+    const setData = () => {
         const apiUrl = SERVER_NAME + "doctor";
         axios.get(apiUrl, CONFIG).then((resp) => {
             const data = resp.data;
             setStaff(data);
         });
-    }, [setStaff]);
+    }
+
+    const updateData = () => {
+        setStaff(loadingStaff)
+        setData()
+    }
 
 
 
@@ -63,6 +75,9 @@ const StaffPage = () => {
     return (
         <div className={styles.page}>
             <h1 className={styles.pageTitle}>Врачи</h1>
+            <Button onClick={updateData}><h6>Обновить
+                {/*<FiRefreshCcw/>*/}
+            </h6></Button>
             <table className={styles.table}>
                 <thead>
                 <tr>

@@ -50,7 +50,7 @@ const DentistryItem = ({dentistry, handleDelete}) => {
 
     return (
         <tr key={dentistry._id}>
-            <td>{loader}</td>
+            <td>{dentistry.address}</td>
             <td>{dentistry.whatsapp_number}</td>
             <td>{dentistry.tel_number}</td>
             <td>
