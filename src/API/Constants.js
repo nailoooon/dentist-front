@@ -17,6 +17,7 @@ export const CONFIGDATA = {
 }
 
 export const LoadingData = 'Загружаем данные...'
+export const loader = 'https://danai.onrender.com/static/media/loader.eca3132c9685f1d9a17f.gif'
 
 export const LogOut = () => {localStorage.removeItem("token")}
 export const IsAuth = () => {return localStorage.getItem("token")}
