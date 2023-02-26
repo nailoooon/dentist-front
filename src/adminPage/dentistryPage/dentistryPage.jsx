@@ -53,6 +53,7 @@ const DentistryPage = () => {
         })
     }
 
+
     return (
         <div className={styles.page}>
             <h1 className={styles.pageTitle}>Стоматологии</h1>
