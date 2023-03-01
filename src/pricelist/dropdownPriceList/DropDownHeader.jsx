@@ -108,7 +108,7 @@ const DropDownHeader = ({item, handleSectorDelete, handleDeleteServiceState,
                 )
             }
             <ConfirmDeleteModal isModalOpen={isDeleteModalOpen} setIsModalOpen={setDeleteModalOpen}
-                handleDelete={handleSectorDelete} id={item.id} setDeleting={setDeleting}/>
+                handleDelete={handleSectorDelete} id={item._id} setDeleting={setDeleting}/>
             <CreateServiceModal isOpen={isEditOpen} toggle={toggleEdit} submitted={submitted}
                                 text={"Обновить"} handleSubmit={handleUpdateSector} pName={item.name}/>
             <CreateServiceModal isOpen={isAddSubSectorOpen} toggle={toggleAdd} submitted={submitted}
